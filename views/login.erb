@@ -1,0 +1,30 @@
+<% if @user.errors.any? %>
+  <div class="errors" id="error_explanation">
+    <h4 class=header> Errors prevented you from loging in:</h4>
+ 
+    <ul>
+    <% @user.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div class="row">
+  <form class="col s12" action="/login" method="post">
+    <div class="row">
+      <div class="input-field col s12">
+        <input name="email" id="email" type="email" class="validate"value="<%= @user.email %>">
+        <label for="email">Email</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <input name="password" id="password" type="password" class="validate" value="<%= @user.password %>">
+        <label for="password">Password</label>
+      </div>
+    </div>
+
+    <input type="submit" value="Login">
+  </form>
+</div>

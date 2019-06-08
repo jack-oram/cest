@@ -24,12 +24,33 @@ end
 #   t.string :password
 # end
 
-
+enable :sessions
 
 get '/' do
+  puts "Session #{session[:id]}"
+  @user = User.find_by(id: session[:id])
   erb :index, :layout => :layout
 end
 
+get '/login' do
+  @user = User.new
+  erb :login, :layout => :layout
+end
+
+post '/login' do
+  email = params[:email]
+  password = params[:password]
+  @user = User.find_by(email: email, password: password)
+  if @user
+    "welcome @user"
+    session[:id]=@user.id
+    redirect to('/')
+  else
+    @user = User.new
+    @user.errors[:base] << "invalid email or password"
+    erb :login, :layout => :layout
+  end
+end
 
 get '/register' do
   @user = User.new
@@ -50,6 +71,7 @@ post '/register' do
                    password: password)
   if @user.save
     "saved ok"
+    session[:id]=@user.id
   else
     erb :register, :layout => :layout
   end

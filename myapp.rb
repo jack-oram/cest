@@ -32,6 +32,7 @@ end
 
 
 get '/register' do
+  @user = User.new
   erb :register, :layout => :layout
 end
 
@@ -50,7 +51,6 @@ post '/register' do
   if @user.save
     "saved ok"
   else
-    puts @user.inspect
-    "errors #{@user}"
+    erb :register, :layout => :layout
   end
 end

@@ -1,0 +1,33 @@
+
+<div class="row">
+  <form class="col s12" action="/addtrade" method="post">
+    <div class="row">
+      <div class="input-field col s12">
+        <input name="brand_and_product_name" id="brand_and_product_name" type="text">
+        <label for="brand_and_product_name">Brand and Product Name</label>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="input-field col s12">
+        <input name="product_description" id="product_description" type="text">
+        <label for="product_description">Product Description</label>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col s1"> 
+        <i class="material-icons">thumb_up</i> 
+      </div>
+      <p class="range-field col s6">
+        <input type="range" id="product_condition" min="0" max="2" />
+      </p>
+      <div class="col s1"> 
+        <i class="material-icons">thumb_down</i> 
+      </div>
+    </div>
+  
+
+    <input type="submit" value="Submit">
+  </form>
+</div>

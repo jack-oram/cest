@@ -26,9 +26,13 @@ end
 
 enable :sessions
 
+def get_current_user()
+  @user = User.find_by(id: session[:id])
+end
+
 get '/' do
   puts "Session #{session[:id]}"
-  @user = User.find_by(id: session[:id])
+  get_current_user()
   erb :index, :layout => :layout
 end
 
@@ -50,6 +54,11 @@ post '/login' do
     @user.errors[:base] << "invalid email or password"
     erb :login, :layout => :layout
   end
+end
+
+get '/addtrade' do
+  get_current_user()
+  erb :addtrade, :layout => :layout
 end
 
 get '/register' do

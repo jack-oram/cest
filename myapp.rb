@@ -15,6 +15,16 @@ class User < ActiveRecord::Base
   validates :email, uniqueness: true
   validates :first_name, :last_name, :email, :password, presence: true
   validates :terms, acceptance: true
+
+  has_many :trades, dependent: :destroy
+
+end
+
+class Trade < ActiveRecord::Base
+  validates :product_name, :description, :condition_part, presence: true
+  
+  belongs_to :user
+
 end
 
 # ActiveRecord::Migration.create_table :users do |t|
@@ -59,6 +69,20 @@ end
 get '/addtrade' do
   get_current_user()
   erb :addtrade, :layout => :layout
+end
+
+post '/addtrade' do
+  get_current_user()
+  product_name = params[:product_name]
+  description = params[:description]
+  condition_part = params[:condition_part]
+
+  @trade = @user.trades.create!(product_name: product_name, 
+                                description: description, 
+                                condition_part: condition_part)
+  
+  redirect to('/')
+
 end
 
 get '/register' do

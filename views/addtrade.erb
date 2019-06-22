@@ -3,31 +3,37 @@
   <form class="col s12" action="/addtrade" method="post">
     <div class="row">
       <div class="input-field col s12">
-        <input name="brand_and_product_name" id="brand_and_product_name" type="text">
-        <label for="brand_and_product_name">Brand and Product Name</label>
+        <input name="product_name" id="product_name" type="text">
+        <label for="product_name">Brand and Product Name</label>
       </div>
     </div>
 
     <div class="row">
       <div class="input-field col s12">
-        <input name="product_description" id="product_description" type="text">
-        <label for="product_description">Product Description</label>
+        <input name="description" id="description" type="text">
+        <label for="description">Product Description</label>
       </div>
     </div>
 
-    <div class="row">
-      <div class="col s1"> 
-        <i class="material-icons">thumb_up</i> 
-      </div>
-      <p class="range-field col s6">
-        <input type="range" id="product_condition" min="0" max="2" />
-      </p>
-      <div class="col s1"> 
-        <i class="material-icons">thumb_down</i> 
-      </div>
+  <div class="row">
+    <div class="input-field col s12">
+      <select id="condition">
+        <option value="" disabled selected>Choose your option</option>
+        <option value="Good">Good</option>
+        <option value="Average">Average</option>
+        <option value="Poor">Poor</option>
+      </select>
+      <input name="condition_part" id="condition_part" type="hidden">
+      <label>Condition of Part</label>
     </div>
-  
+  </div>
 
     <input type="submit" value="Submit">
   </form>
 </div>
+
+<script>
+  $('#condition').on('change', function() {
+    $('#condition_part').val($('#condition').val());
+  });
+</script>

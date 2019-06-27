@@ -43,6 +43,7 @@ end
 get '/' do
   puts "Session #{session[:id]}"
   get_current_user()
+  @trades = Trade.all
   erb :index, :layout => :layout
 end
 

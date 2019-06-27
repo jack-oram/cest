@@ -19,10 +19,14 @@
 
   <body>
     <div class="container">
-      <!-- Page Content goes here -->
-        
+      <!-- Page Content goes here --
+     
       <!-- Dropdown Trigger -->
       <a class='dropdown-trigger btn blue' href='#' data-target='dropdown1'><i class="material-icons dp48">dehaze</i></a>
+
+      <% if @user %>
+        hello <%= @user.first_name %>
+      <% end %>
 
       <!-- Dropdown Structure -->
       <ul id='dropdown1' class='dropdown-content'>

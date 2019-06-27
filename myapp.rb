@@ -68,6 +68,7 @@ end
 
 get '/addtrade' do
   get_current_user()
+  @trade = Trade.new
   erb :addtrade, :layout => :layout
 end
 
@@ -77,11 +78,19 @@ post '/addtrade' do
   description = params[:description]
   condition_part = params[:condition_part]
 
-  @trade = @user.trades.create!(product_name: product_name, 
+  @trade = @user.trades.create(product_name: product_name, 
                                 description: description, 
                                 condition_part: condition_part)
   
-  redirect to('/')
+  
+  if @trade.valid? 
+    "saved ok"
+    redirect to('/')
+  else
+    erb :addtrade, :layout => :layout
+  end
+
+
 
 end
 

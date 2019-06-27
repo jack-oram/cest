@@ -1,16 +1,28 @@
 
+<% if @trade.errors.any? %>
+  <div class="errors" id="error_explanation">
+    <h4 class=header> Errors prevented you from creating trade:</h4>
+ 
+    <ul>
+    <% @trade.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <div class="row">
   <form class="col s12" action="/addtrade" method="post">
     <div class="row">
       <div class="input-field col s12">
-        <input name="product_name" id="product_name" type="text">
+        <input name="product_name" id="product_name" type="text" class="validate" value="<%= @trade.product_name %>">
         <label for="product_name">Brand and Product Name</label>
       </div>
     </div>
 
     <div class="row">
       <div class="input-field col s12">
-        <input name="description" id="description" type="text">
+        <input name="description" id="description" type="text" class="validate" value="<%= @trade.description %>">
         <label for="description">Product Description</label>
       </div>
     </div>
@@ -18,13 +30,12 @@
   <div class="row">
     <div class="input-field col s12">
       <select id="condition">
-        <option value="" disabled selected>Choose your option</option>
+        <option value="" disabled selected>Condition of part</option>
         <option value="Good">Good</option>
         <option value="Average">Average</option>
         <option value="Poor">Poor</option>
       </select>
       <input name="condition_part" id="condition_part" type="hidden">
-      <label>Condition of Part</label>
     </div>
   </div>
 

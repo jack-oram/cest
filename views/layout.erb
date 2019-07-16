@@ -21,10 +21,8 @@
     <div class="container">
       <!-- Page Content goes here --
      
+
       
-      <% if @user %>
-        hello <%= @user.first_name %>
-      <% end %>
 
       <!-- Dropdown Structure, this is only displayed in mobile -->
       <ul class="sidenav" id="mobile-demo">
@@ -36,7 +34,7 @@
 
       <!--yield is where the page will be rendered-->
 
-      <nav>
+    <nav>
       <div class="nav-wrapper black">
         <a href="#" class="brand-logo center">CEST</a>
         <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
@@ -45,6 +43,16 @@
           <li><a class="blue" href="/login">login</a></li>
           <li><a class="blue" href="/register">register</a></li>
           <li><a class="blue" href="/addtrade">add trade</a></li>
+        </ul>
+        <ul class="right hide-on-med-and-up">
+          <% if @user %>
+              Hi <%= @user.first_name %>
+          <% end %>
+         </ul>
+         <ul class="left hide-on-small-only">
+         <% if @user %>
+             Hi <%= @user.first_name %>
+         <% end %>
         </ul>
       </div>
     </nav>

@@ -21,23 +21,17 @@
     <div class="container">
       <!-- Page Content goes here --
      
-      <!-- Dropdown Trigger -->
-      <a class='dropdown-trigger btn blue' href='#' data-target='dropdown1'><i class="material-icons dp48">dehaze</i></a>
-
+      
       <% if @user %>
         hello <%= @user.first_name %>
       <% end %>
 
-      <!-- Dropdown Structure -->
-      <ul id='dropdown1' class='dropdown-content'>
+      <!-- Dropdown Structure, this is only displayed in mobile -->
+      <ul class="sidenav" id="mobile-demo">
         <li><a class="blue" href="/">home</a></li>
-        <li class="divider" tabindex="-1"></li>
         <li><a class="blue" href="/login">login</a></li>
-        <li class="divider" tabindex="-1"></li>
         <li><a class="blue" href="/register">register</a></li>
-        <li class="divider" tabindex="-1"></li>
         <li><a class="blue" href="/addtrade">add trade</a></li>
-        <li class="divider" tabindex="-1"></li>
       </ul>
 
       <!--yield is where the page will be rendered-->
@@ -45,7 +39,13 @@
       <nav>
       <div class="nav-wrapper black">
         <a href="#" class="brand-logo center">CEST</a>
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
+          <li><a class="blue" href="/">home</a></li>
+          <li><a class="blue" href="/login">login</a></li>
+          <li><a class="blue" href="/register">register</a></li>
+          <li><a class="blue" href="/addtrade">add trade</a></li>
+        </ul>
       </div>
     </nav>
         
@@ -60,6 +60,7 @@
 
         $(document).ready(function(){
           $('select').formSelect();
+          $('.sidenav').sidenav();
         });
         
       </script>

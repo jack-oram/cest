@@ -85,6 +85,14 @@ post '/addtrade' do
   
   
   if @trade.valid? 
+
+    @filename = params[:file][:filename]
+    file = params[:file][:tempfile]
+  
+    File.open("./public/#{@trade.id}-#{@filename}", 'wb') do |f|
+      f.write(file.read)
+    end  
+
     "saved ok"
     redirect to('/')
   else

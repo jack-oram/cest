@@ -12,7 +12,7 @@
 <% end %>
 
 <div class="row">
-  <form class="col s12" action="/addtrade" method="post">
+  <form class="col s12" action="/addtrade" enctype="multipart/form-data" method="post">
     <div class="row">
       <div class="input-field col s12">
         <input name="product_name" id="product_name" type="text" class="validate" value="<%= @trade.product_name %>">
@@ -27,17 +27,29 @@
       </div>
     </div>
 
-  <div class="row">
-    <div class="input-field col s12">
-      <select id="condition">
-        <option value="" disabled selected>Condition of part</option>
-        <option value="Good">Good</option>
-        <option value="Average">Average</option>
-        <option value="Poor">Poor</option>
-      </select>
-      <input name="condition_part" id="condition_part" type="hidden">
+    <div class="row">
+      <div class="input-field col s12">
+        <select id="condition">
+          <option value="" disabled selected>Condition of part</option>
+          <option value="Good">Good</option>
+          <option value="Average">Average</option>
+          <option value="Poor">Poor</option>
+        </select>
+        <input name="condition_part" id="condition_part" type="hidden">
+      </div>
     </div>
-  </div>
+
+    <div class="row">
+      <div class="file-field input-field">
+        <div class="blue btn">
+          <span>File</span>
+          <input type="file" name="file">
+        </div>
+        <div class="file-path-wrapper">
+          <input class="file-path validate" type="text" placeholder="Upload one or more files">
+        </div>
+      </div>
+    </div>
 
     <input type="submit" value="Submit">
   </form>

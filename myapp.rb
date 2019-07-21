@@ -39,8 +39,9 @@ enable :sessions
 helpers do
   def image_for_trade(trade)
    # .. write code here that looks for files in './public/ that match "#{trade.id}-"
-   filename = "./test2.jpg"
-    return filename
+   files = Dir.glob("#{trade.id}-*.jpg", base: "public") 
+   puts "files", files
+    return files.first
   end
 end
 

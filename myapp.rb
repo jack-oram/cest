@@ -36,6 +36,14 @@ end
 
 enable :sessions
 
+helpers do
+  def image_for_trade(trade)
+   # .. write code here that looks for files in './public/ that match "#{trade.id}-"
+   filename = "./test2.jpg"
+    return filename
+  end
+end
+
 def get_current_user()
   @user = User.find_by(id: session[:id])
 end

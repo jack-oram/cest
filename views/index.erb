@@ -1,21 +1,17 @@
 
-<table>
-  <thead>
-    <tr>
-      <th>Product Name</th>
-      <th>Description</th>
-      <th>Condition</th>
-    </tr>
-  </thead>
  
-  <tbody>
-    <% @trades.each do |trade| %>
-      <tr>
-        <td><%= trade.product_name %></td>
-        <td><%= trade.description %></td>
-        <td><%= trade.condition_part %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
- 
+<% @trades.each do |trade| %>
+  <div class="card">
+      <div class="card-image waves-effect waves-block waves-light">
+        <img class="activator" src="<%= image_for_trade(trade) %>" style="width:256px;height:256px;">
+      </div>
+      <div class="card-content">
+        <span class="card-title activator grey-text text-darken-4"><%= trade.product_name %><i class="material-icons right">more_vert</i></span>
+      </div>
+      <div class="card-reveal">
+        <span class="card-title grey-text text-darken-4"><%= trade.product_name %><i class="material-icons right">close</i></span>
+        <p><%= trade.description %></p>
+        <p>Condition of part - <%= trade.condition_part %></p>
+      </div>
+    </div>
+  <% end %>
